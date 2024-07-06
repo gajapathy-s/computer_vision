@@ -1,2 +1,0 @@
-computer_vision_basics
--DCATKIN_DEVEL_PREFIX=/home/user/computer_vision/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/user/computer_vision/catkin_ws/install -G Unix Makefiles
