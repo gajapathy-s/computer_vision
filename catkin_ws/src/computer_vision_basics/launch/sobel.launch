@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="computer_vision_basics" type="sobel_edge_detection_x_y.py" name="sobel_node"  output="screen">
+    </node>
+</launch>

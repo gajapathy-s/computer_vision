@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="computer_vision_basics" type="rgb_color_filter.py" name="color_filtering"  output="screen"/>
+</launch>

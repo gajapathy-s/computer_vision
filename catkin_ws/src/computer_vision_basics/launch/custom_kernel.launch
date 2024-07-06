@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="computer_vision_basics" type="user_defined_kernel_sobel.py" name="sobelb_node"  output="screen">
+    </node>
+</launch>

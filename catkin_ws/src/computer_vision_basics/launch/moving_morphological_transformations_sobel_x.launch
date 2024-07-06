@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="computer_vision_basics" type="moving_morphological_transformations_sobel_x.py" name="transformations_node"  output="screen">
+    </node>
+</launch>

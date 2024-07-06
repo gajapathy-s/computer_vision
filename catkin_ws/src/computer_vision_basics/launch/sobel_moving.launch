@@ -1,0 +1,4 @@
+ <launch>
+ <include file="$(find computer_vision_basics)/launch/rgb_drone.launch"/>
+  <node pkg="computer_vision_basics" type="edge_detection_while_moving.py" name="moving_sobel"  output="screen"/>
+ </launch>

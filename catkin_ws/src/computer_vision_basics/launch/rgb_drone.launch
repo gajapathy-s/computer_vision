@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="computer_vision_basics" type="drone_rgb.py" name="drone_img"  output="screen">
+    </node>
+</launch>
