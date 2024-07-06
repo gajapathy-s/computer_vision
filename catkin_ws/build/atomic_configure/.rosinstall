@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/user/catkin_ws/devel/setup.sh
+    local-name: /home/user/computer_vision/catkin_ws/devel/setup.sh

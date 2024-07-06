@@ -1,0 +1,8 @@
+prefix=/home/user/computer_vision/catkin_ws/install
+
+Name: computer_vision_basics
+Description: Description of computer_vision_basics
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
