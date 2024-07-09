@@ -2,72 +2,61 @@
 
 import rospy
 from sensor_msgs.msg import Image
-from cv_bridge import CvBridge
+from cv_bridge import CvBridge, CvBridgeError
 import cv2
 
-class MultiFaceyeDetector(object):
+class LoadFace(object):
     def __init__(self):
-        # Initialize the image using OpenCV from a specific path
-        self.image = cv2.imread("/home/user/catkin_ws/src/face_and_people_detection/scripts/1672967971856.jpeg")
-        
-        # Initialize the face cascade classifier using a Haar cascade file
-        self.face_cascade = cv2.CascadeClassifier("/home/user/catkin_ws/src/face_and_people_detection/haar_cascades/frontalface.xml")
-        self.eye_cascade = cv2.CascadeClassifier("/home/user/catkin_ws/src/face_and_people_detection/haar_cascades/eye.xml")
+        self.image_sub = rospy.Subscriber("/camera/rgb/image_raw", Image, self.camera_callback)
+        self.bridge_object = CvBridge()
 
-    def detect_and_publish(self):
-        # Loop until ROS node is shutdown
-        while not rospy.is_shutdown():
-            # Resize the original image for display purposes
-            img_original = cv2.resize(self.image, (500, 300))
-            
-            # Create a copy of the resized image for processing
-            img = cv2.resize(img_original, (500, 300))
+        # Load Haar cascades for face and eye detection
+        self.face_cascade = cv2.CascadeClassifier('/home/user/catkin_ws/src/unit3_exercises/haar_cascades/frontalface.xml')
+        self.eyes_cascade = cv2.CascadeClassifier('/home/user/catkin_ws/src/unit3_exercises/haar_cascades/eye.xml')
 
-            # Convert the image to grayscale for face detection
-            gray_scale = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            
-            # Parameters for face detection
-            ScaleFactor = 1.2  # Scale factor for image pyramid
-            minNeighbors = 3    # Minimum number of neighbors required for a detected face
-            
-            # Detect faces in the grayscale image
-            faces = self.face_cascade.detectMultiScale(gray_scale, ScaleFactor, minNeighbors)
+        # Check if the cascades are loaded correctly
+        if self.face_cascade.empty():
+            rospy.logerr("Failed to load face cascade classifier.")
+        if self.eyes_cascade.empty():
+            rospy.logerr("Failed to load eyes cascade classifier.")
 
-            # Draw rectangles around the detected faces
-            for (x, y, w, h) in faces:
-                cv2.rectangle(img, (x, y), (x+w, y+h), (255, 255, 0), 2)
-                
-                # Optional: Extract and process the region of interest (ROI)
-                roi = img[y:y+h, x:x+w]
+    def camera_callback(self, data):
+        try:
+            # Convert the ROS Image message to OpenCV format
+            cv_image = self.bridge_object.imgmsg_to_cv2(data, desired_encoding="bgr8")
+        except CvBridgeError as e:
+            rospy.logerr(e)
+            return
 
-                # Detect eyes within the detected face region
-                eyes = self.eye_cascade.detectMultiScale(roi)
-                for (ex, ey, ew, eh) in eyes:
-                    cv2.rectangle(roi, (ex, ey), (ex+ew, ey+eh), (0, 255, 0), 2)
+        # Convert to grayscale
+        gray = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
 
-            # Display the original image with rectangles around faces
-            cv2.imshow('Faces_original', img_original)
-            
-            # Display the processed image with rectangles around faces
-            cv2.imshow('Faces', img)
-            
-            # Wait for a key press and check if the user has pressed any key
-            cv2.waitKey(1)
+        # Detect faces in the image
+        ScaleFactor = 1.2
+        minNeighbors = 3
+        faces = self.face_cascade.detectMultiScale(gray, ScaleFactor, minNeighbors)
+
+        # Draw rectangles around faces and eyes
+        for (x, y, w, h) in faces:
+            cv2.rectangle(cv_image, (x, y), (x + w, y + h), (255, 0, 0), 2)
+            roi_gray = gray[y:y + h, x:x + w]
+            roi_color = cv_image[y:y + h, x:x + w]
+
+            eyes = self.eyes_cascade.detectMultiScale(roi_gray)
+            for (ex, ey, ew, eh) in eyes:
+                cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
+
+        # Display the image with detected faces and eyes
+        cv2.imshow('Face Detection', cv_image)
+        cv2.waitKey(1)
 
 def main():
-    # Initialize the ROS node
-    rospy.init_node('multi_face_detect')
-    
-    # Create an instance of the MultiFaceyeDetector class
-    mfd = MultiFaceyeDetector()
-    
-    # Start detecting faces
-    mfd.detect_and_publish()
-    
-    # Keep the node running until shutdown
-    rospy.spin()
-    
-    # Close all OpenCV windows
+    rospy.init_node('load_face_node', anonymous=True)
+    load_face_object = LoadFace()
+    try:
+        rospy.spin()
+    except KeyboardInterrupt:
+        print("Shutting down")
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':

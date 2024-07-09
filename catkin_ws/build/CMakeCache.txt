@@ -383,6 +383,30 @@ _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
 catkin_DIR:PATH=/opt/ros/noetic/share/catkin/cmake
 
 //Value Computed by CMake
+computer_vision_basics_BINARY_DIR:STATIC=/home/user/catkin_ws/build/computer_vision_basics
+
+//Value Computed by CMake
+computer_vision_basics_SOURCE_DIR:STATIC=/home/user/catkin_ws/src/computer_vision_basics
+
+//Value Computed by CMake
+face_and_people_detection_BINARY_DIR:STATIC=/home/user/catkin_ws/build/face_and_people_detection
+
+//Value Computed by CMake
+face_and_people_detection_SOURCE_DIR:STATIC=/home/user/catkin_ws/src/face_and_people_detection
+
+//Value Computed by CMake
+feature_matching_BINARY_DIR:STATIC=/home/user/catkin_ws/build/feature_matching
+
+//Value Computed by CMake
+feature_matching_SOURCE_DIR:STATIC=/home/user/catkin_ws/src/feature_matching
+
+//Value Computed by CMake
+feature_matiching_BINARY_DIR:STATIC=/home/user/catkin_ws/build/feature_matiching
+
+//Value Computed by CMake
+feature_matiching_SOURCE_DIR:STATIC=/home/user/catkin_ws/src/feature_matiching
+
+//Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/user/catkin_ws/build/gtest/googlemock
 
 //Dependencies for the target
@@ -427,6 +451,9 @@ gtest_hide_internal_symbols:BOOL=OFF
 
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;gtest;
+
+//The directory containing a CMake configuration file for rospy.
+rospy_DIR:PATH=/opt/ros/noetic/share/rospy/cmake
 
 
 ########################
@@ -576,7 +603,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

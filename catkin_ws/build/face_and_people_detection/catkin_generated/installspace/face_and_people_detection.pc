@@ -1,0 +1,8 @@
+prefix=/home/user/catkin_ws/install
+
+Name: face_and_people_detection
+Description: Description of face_and_people_detection
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

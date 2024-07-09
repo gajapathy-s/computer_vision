@@ -1,0 +1,10 @@
+<launch>
+  
+
+  <!-- Ids -->
+  <node pkg="Augumented_reality" type="detect_artags_gazebo.py" name="load_ids_node"  output="screen">
+  </node>
+  
+
+
+</launch>

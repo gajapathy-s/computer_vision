@@ -1,0 +1,8 @@
+prefix=/home/user/catkin_ws/install
+
+Name: feature_matching
+Description: Description of feature_matching
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

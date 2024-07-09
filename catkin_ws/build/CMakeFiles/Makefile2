@@ -54,11 +54,17 @@ CMAKE_BINARY_DIR = /home/user/catkin_ws/build
 
 # The main recursive "all" target.
 all: gtest/all
+all: computer_vision_basics/all
+all: face_and_people_detection/all
+all: feature_matching/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: gtest/preinstall
+preinstall: computer_vision_basics/preinstall
+preinstall: face_and_people_detection/preinstall
+preinstall: feature_matching/preinstall
 
 .PHONY : preinstall
 
@@ -69,8 +75,65 @@ clean: CMakeFiles/clean_test_results.dir/clean
 clean: CMakeFiles/tests.dir/clean
 clean: CMakeFiles/download_extra_data.dir/clean
 clean: gtest/clean
+clean: computer_vision_basics/clean
+clean: face_and_people_detection/clean
+clean: feature_matching/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory computer_vision_basics
+
+# Recursive "all" directory target.
+computer_vision_basics/all:
+
+.PHONY : computer_vision_basics/all
+
+# Recursive "preinstall" directory target.
+computer_vision_basics/preinstall:
+
+.PHONY : computer_vision_basics/preinstall
+
+# Recursive "clean" directory target.
+computer_vision_basics/clean: computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/clean
+
+.PHONY : computer_vision_basics/clean
+
+#=============================================================================
+# Directory level rules for directory face_and_people_detection
+
+# Recursive "all" directory target.
+face_and_people_detection/all:
+
+.PHONY : face_and_people_detection/all
+
+# Recursive "preinstall" directory target.
+face_and_people_detection/preinstall:
+
+.PHONY : face_and_people_detection/preinstall
+
+# Recursive "clean" directory target.
+face_and_people_detection/clean:
+
+.PHONY : face_and_people_detection/clean
+
+#=============================================================================
+# Directory level rules for directory feature_matching
+
+# Recursive "all" directory target.
+feature_matching/all:
+
+.PHONY : feature_matching/all
+
+# Recursive "preinstall" directory target.
+feature_matching/preinstall:
+
+.PHONY : feature_matching/preinstall
+
+# Recursive "clean" directory target.
+feature_matching/clean:
+
+.PHONY : feature_matching/clean
 
 #=============================================================================
 # Directory level rules for directory gtest
@@ -372,6 +435,33 @@ gtest: gtest/googletest/CMakeFiles/gtest.dir/rule
 gtest/googletest/CMakeFiles/gtest.dir/clean:
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/clean
 .PHONY : gtest/googletest/CMakeFiles/gtest.dir/clean
+
+#=============================================================================
+# Target rules for target computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir
+
+# All Build rule for target.
+computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/all:
+	$(MAKE) -f computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/build.make computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/depend
+	$(MAKE) -f computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/build.make computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/user/catkin_ws/build/CMakeFiles --progress-num= "Built target _catkin_empty_exported_target"
+.PHONY : computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/all
+
+# Build rule for subdir invocation for target.
+computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/user/catkin_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/user/catkin_ws/build/CMakeFiles 0
+.PHONY : computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/rule
+
+# Convenience name for target.
+_catkin_empty_exported_target: computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/rule
+
+.PHONY : _catkin_empty_exported_target
+
+# clean rule for target.
+computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/clean:
+	$(MAKE) -f computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/build.make computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/clean
+.PHONY : computer_vision_basics/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

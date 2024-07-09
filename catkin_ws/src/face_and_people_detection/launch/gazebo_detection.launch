@@ -1,9 +1,0 @@
-<launch>
-  <!-- Node for drone flying -->
-  <node pkg="face_and_people_detection" type="drone_flying.py" name="hector_test" output="screen">
-  </node>
-
-  <!-- Node for face recognition -->
-  <node pkg="face_and_people_detection" type="gazebo_haar_detection.py" name="load_image_node" output="screen">
-  </node>
-</launch>

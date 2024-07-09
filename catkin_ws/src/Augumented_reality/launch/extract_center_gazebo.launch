@@ -1,0 +1,10 @@
+<launch>
+  
+
+  <!-- Ids -->
+  <node pkg="Augumented_reality" type="extract_center_gazebo.py" name="load_polygon_node"  output="screen">
+  </node>
+  
+
+
+</launch>
